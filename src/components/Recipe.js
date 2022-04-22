@@ -1,19 +1,15 @@
 import React from "react";
-import "./GetStarted.scss";
+import './Recipe.scss'
 import './Button.scss';
 import { Button } from "./Button";
 import { Link } from "react-router-dom";
+import Popular from "./Popular";
 
-function GetStarted () {
-
-    return (
+function Recipe () {
+    return(
         <>
-        <section className="get-started-component">
-        <div className="get-started-all-text">
-        <h2 className="get-started-title">Find perfect recipe</h2>
-        <p className="get-started-text">How it works?</p>
-        <p className="get-started-text">You can search by name of cake, or you can just put name of main ingridien. If you want you can choose from our filters. Have fun and eat well!</p>
-        </div>
+        <section className="recipe-component">
+        <h3 className="recipe-title">Search for recipe</h3>
         <div className="check">
             <input type="search"/>
             <Link to='/recipes'>
@@ -33,8 +29,9 @@ function GetStarted () {
         <Button buttonStyle="btn--outline" buttonSize="btn--large">Gluten free</Button>
         </Link>
 </div>
-         </section>
+        <Popular />
+        </section>
         </>
-    );
+    )
 }
-export default GetStarted;
+export default Recipe;
