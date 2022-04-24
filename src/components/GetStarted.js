@@ -1,8 +1,8 @@
 import React from "react";
 import "./GetStarted.scss";
 import './Button.scss';
-import { Button } from "./Button";
-import { Link } from "react-router-dom";
+import Category from "./Category";
+import Search from "./Search";
 
 function GetStarted () {
 
@@ -14,24 +14,9 @@ function GetStarted () {
         <p className="get-started-text">How it works?</p>
         <p className="get-started-text">You can search by name of cake, or you can just put name of main ingridien. If you want you can choose from our filters. Have fun and eat well!</p>
         </div>
-        <div className="check">
-            <input type="search"/>
-            <Link to='/recipes'>
-        <Button buttonStyle="btn--outline" buttonSize="btn--large">
-          Find Recipe
-        </Button>
-        </Link>
-         </div>
+        <Search />
 <div className="category-section">
-    <Link to="/quick-recipes">
-        <Button buttonStyle="btn--outline" buttonSize="btn--large">Quick recipes</Button>
-        </Link>
-        <Link to='/dairy-free'>
-        <Button buttonStyle="btn--outline" buttonSize="btn--large">Dairy Free</Button>
-        </Link>
-        <Link to='/gluten-free'>
-        <Button buttonStyle="btn--outline" buttonSize="btn--large">Gluten free</Button>
-        </Link>
+    <Category />
 </div>
          </section>
         </>

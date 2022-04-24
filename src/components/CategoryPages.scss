@@ -1,0 +1,52 @@
+.category-title{
+    color: white;
+    font-size: 50px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+.category-title-dairy{
+    color: white;
+    font-size: 50px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.category-title-gluten{
+    color: white;
+    font-size: 50px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.searched-titile{
+    color: white;
+    font-size: 50px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 760px) {
+    .category-title {
+        margin-top: 850px;
+    }
+    .category-title-dairy {
+        margin-top: 920px;
+        text-align: center;
+    }
+
+    .category-title-gluten {
+        margin-top: 920px;
+        text-align: center;
+    }
+    .searched-titile {
+        margin-top: 920px;
+        text-align: center;
+    }
+    .category-section-smaller {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+        
+    }
+
+}

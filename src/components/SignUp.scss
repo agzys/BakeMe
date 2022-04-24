@@ -1,0 +1,11 @@
+.baking-info {
+    color: white;
+    font-size: 60px;
+}
+
+@media screen and (max-width: 760px) {
+    .baking-info{
+        margin-top: -500px;
+        text-align: center;
+    }
+}
