@@ -5,95 +5,71 @@ import Category from "./Category";
 import "./Recipe.scss";
 import { Link } from "react-router-dom";
 import "./CategoryPages.scss";
+import { useFetch } from "../hooks/useFetch";
 
+function Cakes() {
+  const { category: Cakes } = useFetch(
+    "Cakes",
+    `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=6&tags=cake`,
+    true
+  );
 
-function Cakes () {
-
-    const [Cakes, setCakes] = useState([]);
-
-    useEffect(() => {
-        getCakes();
-    }, []);
-
-const getCakes = async () => {
-    const check = localStorage.getItem('Cakes');
-
-    if(check){
-        setCakes(JSON.parse(check));
-    }else{
-        const api = await fetch(
-            `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=6&tags=cake`
-            );
-            const data = await api.json();
-            localStorage.setItem('Cakes', JSON.stringify(data.recipes));
-            setCakes(data.recipes);
-            console.log(data);
-    
-        }
-    }
-
-    return(
-<>
-<section className="recipe-component">
-    <p className="category-title">Cakes</p>
-    <div className="category-section-smaller">
-    <Category />
-    </div>
+  return (
+    <>
+      <section className='recipe-component'>
+        <p className='category-title'>Cakes</p>
+        <div className='category-section-smaller'>
+          <Category />
+        </div>
         <Grid>
-        {Cakes.map((recipes) => {
-                return (
-                   <RecipeComponents key={recipes.id}>
-                       <Link to={'/recipedetails/' + recipes.id}>
-                        <img src={recipes.image}alt={recipes.title} />
-                        <p>{recipes.title}</p>
-                        </Link>
-                    </RecipeComponents>
-                )
-            })}
+          {Cakes.map(recipes => {
+            return (
+              <RecipeComponents key={recipes.id}>
+                <Link to={"/recipedetails/" + recipes.id}>
+                  <img src={recipes.image} alt={recipes.title} />
+                  <p>{recipes.title}</p>
+                </Link>
+              </RecipeComponents>
+            );
+          })}
         </Grid>
-</section> 
-</>
-    )
+      </section>
+    </>
+  );
 }
-const CategoryTitle = styled.p`
-
-`
+const CategoryTitle = styled.p``;
 const Grid = styled.div`
-max-width: 1200px;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 const RecipeComponents = styled.div`
-width: 300px;
-height: 240px;
-background-color: white;
-border: 2px solid white;
-border-radius: 10px;
-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.171);
-overflow: hidden;
-font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-      'Lucida Sans', Arial, sans-serif;
-color: rgb(66, 64, 61);
-margin: 1rem;
+  width: 300px;
+  height: 240px;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.171);
+  overflow: hidden;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: rgb(66, 64, 61);
+  margin: 1rem;
 
-img {
+  img {
     width: 100%;
     height: 75%;
     border-radius: 10px;
-}
-p {
+  }
+  p {
     margin: 0.5rem;
-}
-img + p {
+  }
+  img + p {
     font-weight: bold;
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
-
-}
-
+  }
 `;
-
 
 export default Cakes;
